@@ -1,0 +1,11 @@
+pip3 install olefile
+pip3 install python-docx
+pip3 install "pdfminer.six=="20200124"
+pip3 install pandas==1.0.5
+pip3 install tqdm
+pip3 install Flask-SQLAlchemy
+
+sudo apt-get install pyton3-matplotlib
+sudo apt-get install -y python-sqlalchemy
+sudo pip3 install pymysql
+

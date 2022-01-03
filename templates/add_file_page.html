@@ -1,0 +1,59 @@
+<!DOCTYPE html1
+<html lang="kr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Add_File Page - 파일추가 화면</title>
+        <link rel="stylesheet" href="/static/css/style.css">
+        <script src="static/js/main.js"></script>
+    </head>
+    <body>
+        <div id="header">
+            <button type="button" onclick="location.href='/'" style="background-color: white; border-radius: 10%; border: 0; outline: 0;">
+                <span id=title_text>
+                    <h1><b>진실의 돋보기</b><img src="static/css/image/glass.png" width="70px" height="70px"></h1>
+                </span>
+            </button>
+        </div>
+        
+        <div class="choose_way">
+            <div id="manual">
+                <button type="button" onclick="location.href='/manual'" style="background-color: white; border-radius: 10%; border-color: grey;">
+                    <img src="static/css/image/manual.png" width="80px" height="80px">
+                    <br><b>이용 안내</b>
+                </button>
+            </div>
+            <div id="add_file">
+                <button type="button" onclick="location.href='/add-file'" style="background-color: white; border-radius: 10%; border: 0; outline: 0;">
+                    <img  src="static/css/image/addfile.png" width="80px" height="80px">
+                    <br><b>파일 첨부</b>
+                </button>
+            </div>
+        </div>
+
+        <h3><hr id="hr1"></h3>
+
+        
+        
+        <div class="content">
+            <input type="radio" name="apply" value="파일첨부" onclick="div_show1(this.value, 'divshow1', 'divshow2');">파일첨부
+            <input type="radio" name="apply" value="링크입력" onclick="div_show1(this.value, 'divshow1', 'divshow2');">링크입력
+
+            <form action="/result" method="POST" enctype="multipart/form-data">
+                <div id="divshow1" style="display: none;">
+                    <br>
+                    선택 가능한 파일 형식 : .pdf / .docs / .hwp / .txt<br>
+                    <input type="file" name="file"/>
+                    <input type="submit" id="result_submit" value="결과보기"/> <!-- submit을 누르면 action을 실행함-->
+                </div>
+                
+                <div id="divshow2" style="display: none;">
+                    <br>
+                    url 입력하기 : 
+                    <input type="text" name="url" placeholder="ex)https://www.naver.com/"/>
+                    <input type="submit" id="result_submit" value="결과보기"/>
+                </div>
+            </form>
+        
+        </div>
+    </body>
+</html>

@@ -1,0 +1,172 @@
+#header { /* 진실의돋보기 제목 부분 */
+    text-align: center;
+
+    padding-top: 50px;
+    padding-bottom: 20px;
+
+    display: block;
+    margin: auto;
+}
+
+#title_text { /* 제목(진실의 돋보기) 크기 */
+    font-size: 30px;
+}
+
+.choose_way { /* 이용안내, 파일첨부 버튼이 위치한 부분 */
+    padding-top: 40px;
+    padding-bottom: 50px;
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    display: flex;
+}
+
+#manual { /* 이용안내 버튼 */
+    float:left;
+    flex: 1;
+    width: 30%;
+    margin-left: 30%;
+    padding-right: 5px;
+}
+#add_file { /* 파일첨부 버튼 */
+    float:right;
+    flex: 1;
+    width: 30%;
+    margin-right: 30%;
+    padding-left: 5px;
+}
+
+#hr1 { /* 진한 구분선 */
+    width: 80%;
+    height: 5px;
+    background-color: black;
+    margin-bottom: 30px;
+}
+
+.content { /* add_file_page에 본문 부분(중앙) */
+    margin-top: 10px;
+    width: 80%;
+    padding-left: 10%;
+}
+.content1 {
+	width: 70%;
+	height: fit-content;
+	margin-left: 10%;
+	border-radius: 4px;
+	background-color: rgb(229,226,226);
+}
+
+#result_submit { /* add_file_page에 결과보기 버튼 */
+    float: right;
+}
+
+
+
+#신뢰도숫자1 {
+    color: #00FF00;
+}
+#p1 { /* 신뢰도 바  */
+  border : 2px solid black;
+  width: 50%;
+  height: 20px;
+  background: crimson;
+}
+#p1 {
+  color: lightblue;
+}
+
+#p1::-moz-progress-bar {
+  background: lightcolor;
+}
+
+#p1::-webkit-progress-value { /*수치값*/
+  background: #00FF00;
+}
+
+#p1::-webkit-progress-bar { /*나머지 배경색 */
+  background: white;
+}
+
+#신뢰도숫자2 {
+    color: #ff7f50;
+}
+#p2 { /* 신뢰도 바  */
+  border : 2px solid black;
+  width: 50%;
+  height: 20px;
+  background: crimson;
+}
+#p2 {
+  color: lightblue;
+}
+
+#p2::-moz-progress-bar {
+  background: lightcolor;
+}
+
+#p2::-webkit-progress-value { /*수치값*/
+  background: #ff7f50;
+}
+
+#p2::-webkit-progress-bar { /*나머지 배경색 */
+  background: white;
+}
+
+#신뢰도숫자3 {
+    color: #dc143c;
+}
+#p3 { /* 신뢰도 바  */
+  border : 2px solid black;
+  width: 50%;
+  height: 20px;
+  background: crimson;
+}
+#p3 {
+  color: lightblue;
+}
+
+#p3::-moz-progress-bar {
+  background: lightcolor;
+}
+
+#p3::-webkit-progress-value { /*수치값*/
+  background: #dc143c;
+}
+
+#p3::-webkit-progress-bar { /*나머지 배경색 */
+  background: white;
+}
+
+#신뢰도숫자4 {
+	color: rgb(46, 45, 45);
+}
+#p4 {
+	border:2px solid black;
+	width:50%;
+	height:20px;
+	background:crimson;
+}
+#p4 { color:lightblue; }
+#p4::-moz-progress-bar { background:lightcolor; }
+#p4::-webkit-progress-value { background:#4d4d4d; }
+#p4::-webkit-progress-bar { background: white; }
+
+
+#hr2 { /* 결과페이지 두번째 구분선 */
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+#news_body { /* 결과페이지 뉴스기사 본문 */
+    font-size: 20px;
+    width: 80%;
+}
+
+#돋보기2 { /* 결과페이지 돋보기이미지 */
+    margin-left: 30px;
+}
+
+#p {
+    font-size: 14px;
+    color: #333333;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="kr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Result Page - 결과화면</title>
+        <link rel="stylesheet" href="/static/css/style.css">
+    </head>
+    <body>
+        <div id="header">
+            <button type="button" onclick="location.href='/'" style="background-color: white; border-radius: 10%; border: 0; outline: 0;">
+                <span id=title_text>
+                    <h1><b>진실의 돋보기</b><img src="static/css/image/glass.png" width="70px" height="70px"></h1>
+                </span>
+            </button>
+        </div>
+        
+        <div class="choose_way">
+            <div id="manual">
+                <button type="button" onclick="location.href='/manual'" style="background-color: white; border-radius: 10%; border-color: grey;">
+                    <img src="static/css/image/manual.png" width="80px" height="80px">
+                    <br><b>이용 안내</b>
+                </button>
+            </div>
+            <div id="add_file">
+                <button type="button" onclick="location.href='/add-file'" style="background-color: white; border-radius: 10%; border: 0; outline: 0;">
+                    <img  src="static/css/image/addfile.png" width="80px" height="80px">
+                    <br><b>파일 첨부</b>
+                </button>
+            </div>
+        </div>
+
+        <h3><hr id="hr1"></h3>
+
+        <form action="/result" class="content" method="post">
+           
+        	{% if ((percentage<=100) and (percentage>=60)): %}
+                	<h1>신뢰도 : <span id="신뢰도숫자1">{{percentage}}</span>% <img id="돋보기2" src="static/css/image/trustglass.png" hspace="20" width="35px" height="35px" title="60~100: 신뢰 가능, 40~60: 애매함, 0~40: 신뢰 불가능"></h1>
+                	<progress id="p1" max="100" value="{{percentage}}"></progress>
+            	{% elif ((percentage<60) and (percentage>=40)): %}
+                	<h1>신뢰도 : <span id="신뢰도숫자2">{{percentage}}</span>% <img id="돋보기2" src="static/css/image/trustglass.png" hspace="20" width="35px" height="35px" title="60~100: 신뢰 가능, 40~60: 애매함, 0~40: 신뢰 불가능"></h1>
+                	<progress id="p2" max="100" value="{{percentage}}"></progress>
+		{% elif ((percentage<40) and (percentage>=0)): %}
+                	<h1>신뢰도 : <span id="신뢰도숫자3">{{percentage}}</span>% <img id="돋보기2" src="static/css/image/trustglass.png" hspace="20" width="35px" height="35px" title="60~100: 신뢰 가능, 40~60: 애매함, 0~40: 신뢰 불가능"></h1>
+                	<progress id="p3" max="100" value="{{percentage}}"></progress>
+		{% else : %}
+			<h1>신뢰도 : <span id="신뢰도숫자4">{{percentage}}</span>% <img id="돋보기2" src="static/css/image/trustglass.png" hspace="20" width="35px" height="35px" title="60~100: 신뢰 가능, 40~60: 애매함, 0~40: 신뢰 불가능"></h1>
+			<progress id="p4" max="100" value="{{percentage}}"></progress>
+		{% endif %}
+		<br><br>
+            <div id="news_body">
+		검색된 허가 제품명 : {{sample_list_total}}<br>
+		검색된 비허가 제품명 : {{sample_list_ban}}<br>
+		<hr>
+		{% for i in range(body_text|length) %} <!-- 1.본문 문장개수 만큼-->
+			{% set split_bodytext = body_text[i].split() %}
+			{% for j in range(split_bodytext|length) %} <!-- 2.한 문장에 있는 단어개수 만큼-->
+				{% if sample_list_ban|length == 0 %}
+					{% for n in range(sample_list_total|length) %} <!-- 3.등록된 상품명 개수 만큼-->
+						{% if sample_list_total[n] == split_bodytext[j] %}
+							<b style="background-color:yellow;">{{split_bodytext[j]}}</b>&nbsp;
+						{% endif %}
+					{% endfor %}
+
+					{% if split_bodytext[j] not in sample_list_total %}
+						{{split_bodytext[j]}}&nbsp;
+					{% endif %}
+				{% else %}
+					{% for m in range(sample_list_ban|length) %}
+						{% if sample_list_ban[m] == split_bodytext[j] %}
+							<b style="background-color:red;">{{split_bodytext[j]}}</b>&nbsp;
+						{% endif %}
+					{% endfor %}
+
+					{% if split_bodytext[j] not in sample_list_ban %}
+						{{split_bodytext[j]}}&nbsp;
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+		<br><br>
+		{% endfor %}
+            </div>
+	    <br>
+	    <hr>
+	    <br>
+        </form>
+	<div class="content1">
+		<form action="/evaluate" method="POST">
+			<h2 style="color: rgb(50,179,50);">평가 및 추가의견 입력란</h2>
+			<h4 style="color: rgb(50,179,50);">*개선점을 입력해주시면 감사하겠습니다*</h4>
+			<input type="radio" name="options" value="좋아요!"/>Good!
+			&nbsp;&nbsp;&nbsp;
+			<input type="radio" name="options" value="별로에요!"/>Bad!
+			<br><br>
+			개선점을 적어주세요!<br>
+			
+			<textarea cols="50" rows="10" name="text" placeholder="이곳에 내용을 입력해 주세요!" style="width:75%;"></textarea>
+			<br>
+			<input type="submit" value="입력하기" style="float: right;"/>
+			<br>
+			<h4><img src="static/css/image/cute.png" width="70px" height="30px"></h4>
+		</form>
+	</div>
+    </body>
+</html>
+
